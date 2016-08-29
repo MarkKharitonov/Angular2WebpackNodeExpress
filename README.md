@@ -27,7 +27,7 @@ Running
  1. `npm install`
  1. `npm run dev` 
      
-Navigate to http://localhost:3000
+Navigate to http://localhost:4000
 
 Problems
 ========

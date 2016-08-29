@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "scripts": {
     "postinstall": "typings install",
-    "preinstall": "npm install -g typings tsc webpack",
+    "preinstall": "npm install -g typings typescript tsc webpack",
     "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
     "dev:client": "webpack-dev-server --content-base src/client",
-    "dev:server": "tsc src/server & node dist/server/main.js"
+    "dev:server": "tsc -p src/server & node dist/server/main.js"
   },
   "dependencies": {
     "@angular/common": "2.0.0-rc.5",
