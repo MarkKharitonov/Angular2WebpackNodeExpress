@@ -1,9 +1,9 @@
 Introduction
 ============
 
-This project demonstrates my attempt to figure out how to start developing an Angular2 application.
+This project demonstrates my attempt to figure out how to start developing an Angular2 RC5 application.
 
-I am not a seasoned web developer, so for me the most difficult part of Angular2 is the eco-system. 
+I am not a seasoned web developer, so for me the first obstacle (out of many) is setting up the eco-system. 
 
 Ideally, I would like to:
 
@@ -24,24 +24,10 @@ My starting point was the module-1 branch of the retain-app repository - https:/
 Running
 =======
 
- 1. `npm install tsc typescript webpack typings -g`
  1. `npm install`
- 1. `typings install`
- 1. `npm start` 
+ 1. `npm run dev` 
      
-     Starts the webpack-dev-server on port 3000
- 1. `cd ./src/server; tsc`
-     
-     When working in IDEA (or WebStorm) the TypeScript files in ./src/server are compiled on save automatically, but it has to be done 
-     manually for the very first time.
- 1. `cd ../../dist/server; node main.js`
-     
-     Starts the node.js server on port 2999
-
-The node.js server is configured as a proxy server for webpack-dev-server to use for any `/api*` resources. Hence navigating to 
-
- - `http://localhost:3000` should first display **Loading ...** followed by **Angular2 is up!**
- - `http://localhost:3000/api` should display **Hello from Express.**
+Navigate to http://localhost:3000
 
 Problems
 ========
@@ -49,18 +35,18 @@ Problems
 There are several things I do not like/understand/uncertain of:
 
  1. The client side contents are transpiled by webpack, the server side - by IDE or manually. Not sure if this corresponds to the best 
- practices. 
+    practices. 
  
- For example, webpack is going to take care of any plain .js files under ./src/client - they should be bundled and
- placed under ./dist/client automatically. But what about plain .js files under ./src/server ? 
+    For example, webpack is going to take care of any plain .js files under ./src/client - they should be bundled and
+    placed under ./dist/client automatically. But what about plain .js files under ./src/server ? They will have to be copied as well.
  1. I have three tsconfig.json files - `./src/client/tsconfig.json`, `./src/server/tsconfig.json` and `./tsconfig.json`. The three 
- files share most of the options, but right now I copy them in each of the three files - not very good.
+    files share most of the options, but right now I copy them in each of the three files - not very good.
  1. Because the `typings` folder is at the root I had to start all the top level TypeScript files (.\src\client\main.ts, 
- .\src\client\polyfills.ts, .\src\client\vendor.ts and .\src\server\main.ts) with
- 
-   /// &lt;reference path="../../typings/index.d.ts" /&gt;
+    .\src\client\polyfills.ts, .\src\client\vendor.ts and .\src\server\main.ts) with 
+    
+    /// &lt;reference path="../../typings/index.d.ts" /&gt;
    
- Can anything be done about it while keeping the client and server files under the src folder?
+    Can anything be done about it while keeping the client and server files under the src folder?
  
 P.S.
 http://stackoverflow.com/questions/39007344/how-to-wire-angular2-webpack-node-express
